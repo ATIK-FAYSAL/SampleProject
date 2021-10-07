@@ -1,4 +1,4 @@
-package com.ecommerce.practiceproject
+package com.ecommerce.practiceproject.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import kotlinx.android.synthetic.main.layout_fragment_one.*
+import com.ecommerce.practiceproject.R
 
 /**
  * Date 9/19/2021.
@@ -18,9 +18,12 @@ import kotlinx.android.synthetic.main.layout_fragment_one.*
  */
 class FragmentThree : Fragment() {
 
+
+
     @Nullable
     override fun onCreateView(@NonNull inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View {
         val view =  inflater.inflate(R.layout.layout_fragment_three, container, false)
+
 
         val tvFragmentTitle = view.findViewById<TextView>(R.id.tv_fragment_title)
 

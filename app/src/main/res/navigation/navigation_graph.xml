@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/fragmentOne"
-        android:name="com.ecommerce.practiceproject.FragmentOne"
+        android:name="com.ecommerce.practiceproject.view.FragmentOne"
         android:label="FragmentOne" >
         <action
             android:id="@+id/action_fragmentOne_to_fragmentTwo"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentTwo"
-        android:name="com.ecommerce.practiceproject.FragmentTwo"
+        android:name="com.ecommerce.practiceproject.view.FragmentTwo"
         android:label="FragmentTwo" >
         <action
             android:id="@+id/action_fragmentTwo_to_fragmentThree"
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentThree"
-        android:name="com.ecommerce.practiceproject.FragmentThree"
+        android:name="com.ecommerce.practiceproject.view.FragmentThree"
         android:label="FragmentThree" >
         <action
             android:id="@+id/action_fragmentThree_to_fragmentTwo3"

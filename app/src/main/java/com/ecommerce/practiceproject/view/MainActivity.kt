@@ -1,4 +1,4 @@
-package com.ecommerce.practiceproject
+package com.ecommerce.practiceproject.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,14 +8,8 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import android.R.string.no
 import android.annotation.SuppressLint
-import io.reactivex.functions.Function
-import io.reactivex.functions.Predicate
-import io.reactivex.observers.DisposableObserver
-import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.Exception
-import java.util.*
+import com.ecommerce.practiceproject.R
 
 class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
