@@ -35,13 +35,12 @@ class FragmentOne : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.layout_fragment_one, container, false)
         viewModel = ViewModelProviders.of(this, ViewModelFactory(UserRepository())).get(FragmentViewModel::class.java)
         val view =  binding.root
+        binding.lifecycleOwner = this
+        binding.userList = viewModel
 
-
-//        val tvFragmentTitle = view.findViewById<TextView>(R.id.tv_fragment_title)
-//
-//        tvFragmentTitle.setOnClickListener {
-//            Navigation.findNavController(view).navigate(R.id.action_fragmentOne_to_fragmentTwo);
-//        }
+        binding.btnAddNewUser.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_fragmentOne_to_fragmentTwo)
+        }
 
         return view
     }

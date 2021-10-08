@@ -6,9 +6,9 @@ import com.ecommerce.practiceproject.database.entities.UserEntities
 
 class UserRepository
 {
-    fun addUser(user : UserEntities)
+    suspend fun addUser(user : UserEntities) : Long
     {
-        DatabaseClient.getInstance(mContext)
+        return DatabaseClient.getInstance(mContext)
             .appDatabase
             .userDao().addUser(user)
     }

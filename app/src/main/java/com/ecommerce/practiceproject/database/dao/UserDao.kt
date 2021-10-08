@@ -8,5 +8,5 @@ import com.ecommerce.practiceproject.database.entities.UserEntities
 interface UserDao
 {
     @Insert
-    fun addUser(user : UserEntities)
+    suspend fun addUser(user : UserEntities) : Long
 }
