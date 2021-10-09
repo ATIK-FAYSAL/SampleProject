@@ -34,4 +34,17 @@ class FragmentViewModelTest : TestCase(){
 
         TestCase.assertEquals(expectedOutput, result)
     }
+
+    @Test
+    fun addNewUser() {
+        val expectedOutput = 0
+        viewModel.mlFullName.postValue("Atik Faysal")
+        viewModel.mlAddress.postValue("Dhaka, Shukrabad")
+        viewModel.mlEmail.postValue("atik@gmail.com")
+        viewModel.mlPhone.postValue("01794037303")
+
+        val result = viewModel.addUser()
+
+        TestCase.assertEquals(expectedOutput, result)
+    }
 }

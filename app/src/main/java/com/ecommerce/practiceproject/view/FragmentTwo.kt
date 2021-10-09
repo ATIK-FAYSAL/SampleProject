@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.databinding.DataBindingUtil
@@ -45,8 +46,8 @@ class FragmentTwo: Fragment() {
     {
         viewModel.mlIsUserAdded.observe(viewLifecycleOwner, {
             if(it)
-                Log.i("isDataEntry","Data Entered")
-            else Log.i("isDataEntry","Failed to add data")
+                requireActivity().supportFragmentManager.popBackStack()
+            else Toast.makeText(requireContext(),"Failed to add new user, please retry",Toast.LENGTH_LONG).show()
         })
 
         binding.btnSave.setOnClickListener{

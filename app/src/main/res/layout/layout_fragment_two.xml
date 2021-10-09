@@ -4,11 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="add_user"
             type="com.ecommerce.practiceproject.view_model.FragmentViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +23,6 @@
             android:hint="Enter Full Name"
             android:inputType="textPersonName"
             android:text="@={add_user.mlFullName}"
-            android:textColor="@color/black"
             android:textSize="15dp"/>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -38,7 +35,6 @@
             android:singleLine="true"
             android:text="@={add_user.mlAddress}"
             android:inputType="textPostalAddress"
-            android:textColor="@color/black"
             android:textSize="15dp"/>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -51,7 +47,6 @@
             android:singleLine="true"
             android:text="@={add_user.mlEmail}"
             android:inputType="textEmailAddress"
-            android:textColor="@color/black"
             android:textSize="15dp"/>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -65,7 +60,6 @@
             android:singleLine="true"
             android:text="@={add_user.mlPhone}"
             android:maxLength="14"
-            android:textColor="@color/black"
             android:textSize="15dp"/>
 
         <androidx.appcompat.widget.AppCompatButton

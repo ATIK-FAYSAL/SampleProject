@@ -46,6 +46,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    androidTestImplementation 'androidx.fragment:fragment-testing:1.3.6'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -68,7 +69,7 @@ dependencies {
 
     //network calling library
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.7.2'//json response converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'//json response converter
     implementation 'com.squareup.okhttp3:okhttp:4.3.1'//modify network call
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
 

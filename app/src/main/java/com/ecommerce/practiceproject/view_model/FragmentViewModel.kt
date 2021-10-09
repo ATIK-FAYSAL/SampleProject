@@ -7,17 +7,29 @@ import com.ecommerce.practiceproject.database.entities.UserEntities
 import com.ecommerce.practiceproject.model.UserRepository
 import com.ecommerce.practiceproject.utils.isEmptyString
 import com.ecommerce.practiceproject.utils.phoneNumberValidation
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
-class FragmentViewModel( private  val repository : UserRepository) : ViewModel()
+class FragmentViewModel( private  val repository : UserRepository) : ViewModel(), CoroutineScope
 {
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
+
+    lateinit var job: Job
+
+    init {
+        job = Job()
+    }
+
     //private val repository = UserRepository()
     var mlFullName = MutableLiveData<String>()
     var mlPhone = MutableLiveData<String>()
     var mlEmail = MutableLiveData<String>()
     var mlAddress = MutableLiveData<String>()
 
-    var mlIsUserAdded = MutableLiveData(false)
+    var mlIsUserAdded = MutableLiveData<Boolean>()
+
+    var mlUserList = MutableLiveData<ArrayList<UserEntities>>()
 
     /**
      * ...validation of required data
@@ -57,17 +69,20 @@ class FragmentViewModel( private  val repository : UserRepository) : ViewModel()
         user.email = mlEmail.value.toString()
         user.phone = mlPhone.value.toString()
 
-        viewModelScope.launch {
+        job = viewModelScope.launch {
             val result = repository.addUser(user)
             mlIsUserAdded.value = result > -1
         }
     }
 
+    /**
+     * ...get user list from local db
+     */
     fun getUserList()
     {
-        viewModelScope.launch {
-
+        job = viewModelScope.launch {
+            val userList = withContext(Dispatchers.IO){repository.getUserList()}
+            mlUserList.postValue(userList as ArrayList<UserEntities>)
         }
     }
-
 }

@@ -12,4 +12,14 @@ class UserRepository
             .appDatabase
             .userDao().addUser(user)
     }
+
+    /**
+     * ...get user list from local db
+     */
+    suspend fun getUserList() : List<UserEntities>
+    {
+        return DatabaseClient.getInstance(mContext)
+            .appDatabase
+            .userDao().getUserList()
+    }
 }
