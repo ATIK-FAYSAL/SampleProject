@@ -3,6 +3,7 @@ package com.ecommerce.practiceproject.view_model
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ecommerce.practiceproject.data.ItemModel
 import com.ecommerce.practiceproject.database.entities.UserEntities
 import com.ecommerce.practiceproject.model.UserRepository
 import com.ecommerce.practiceproject.utils.isEmptyString
@@ -30,6 +31,7 @@ class FragmentViewModel( private  val repository : UserRepository) : ViewModel()
     var mlIsUserAdded = MutableLiveData<Boolean>()
 
     var mlUserList = MutableLiveData<ArrayList<UserEntities>>()
+    var mlUserListRemote = MutableLiveData<ArrayList<ItemModel>>()
 
     /**
      * ...validation of required data
@@ -83,6 +85,19 @@ class FragmentViewModel( private  val repository : UserRepository) : ViewModel()
         job = viewModelScope.launch {
             val userList = withContext(Dispatchers.IO){repository.getUserList()}
             mlUserList.postValue(userList as ArrayList<UserEntities>)
+        }
+    }
+
+    /**
+     * ...get user list from remote db
+     */
+    fun getUserListFromRemote()
+    {
+        job = viewModelScope.launch {
+            val response = withContext(Dispatchers.IO){repository.getUserLists()}
+            if(response.results.isNotEmpty())
+                mlUserListRemote.postValue(response.results as ArrayList<ItemModel>)
+            else mlUserListRemote.postValue(ArrayList<ItemModel>())
         }
     }
 }

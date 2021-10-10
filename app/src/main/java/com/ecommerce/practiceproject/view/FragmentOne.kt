@@ -51,7 +51,7 @@ class FragmentOne : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getUserList()
-        viewModel.getUserList()
+        viewModel.getUserListFromRemote()
     }
 
     override fun onDestroy() {
@@ -61,7 +61,7 @@ class FragmentOne : Fragment() {
 
     private fun getUserList()
     {
-        viewModel.mlUserList.observe(viewLifecycleOwner,{
+        viewModel.mlUserListRemote.observe(viewLifecycleOwner,{
             Log.d("userListSize","${it.size}")
             if(it.size > 0)
             {

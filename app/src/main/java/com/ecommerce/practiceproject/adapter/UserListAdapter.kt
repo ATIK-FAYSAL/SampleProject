@@ -9,9 +9,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ecommerce.practiceproject.R
 import com.ecommerce.practiceproject.core.BaseAdapter
+import com.ecommerce.practiceproject.data.ItemModel
 import com.ecommerce.practiceproject.database.entities.UserEntities
 
-class UserListAdapter(private val context: Context, items:List<UserEntities>) : BaseAdapter<UserListAdapter.ViewHolder, UserEntities>()
+class UserListAdapter(private val context: Context, items:List<ItemModel>) : BaseAdapter<UserListAdapter.ViewHolder, UserEntities>()
 {
     private var userList = items
 
@@ -24,10 +25,10 @@ class UserListAdapter(private val context: Context, items:List<UserEntities>) : 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model = userList[position]
 
-        holder.tvUserName.text = "${model.fullName} {${model.userId}}"
+        holder.tvUserName.text = "${model.nameInfo.title} ${model.nameInfo.firstName} ${model.nameInfo.lastName}"
         holder.tvPhone.text = model.phone
         holder.tvEmail.text = model.email
-        holder.tvAddress.text = model.address
+        holder.tvAddress.text = "${model.location.city}, ${model.location.state} ${model.location.postcode}, ${model.location.country}"
     }
 
     override fun getItemCount(): Int {
