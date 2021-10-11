@@ -8,7 +8,6 @@ import android.view.ViewGroup
 
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.databinding.DataBindingUtil
@@ -17,6 +16,8 @@ import androidx.navigation.Navigation
 import com.ecommerce.practiceproject.R
 import com.ecommerce.practiceproject.adapter.UserListAdapter
 import com.ecommerce.practiceproject.config.ViewModelFactory
+import com.ecommerce.practiceproject.core.IPreferenceHelper
+import com.ecommerce.practiceproject.core.PreferenceManager
 import com.ecommerce.practiceproject.databinding.LayoutFragmentOneBinding
 import com.ecommerce.practiceproject.model.UserRepository
 import com.ecommerce.practiceproject.view_model.FragmentViewModel
@@ -33,6 +34,8 @@ class FragmentOne : Fragment() {
     private lateinit var binding : LayoutFragmentOneBinding
     private lateinit var viewModel : FragmentViewModel
 
+    private val preferenceHelper: IPreferenceHelper by lazy { PreferenceManager(requireContext()) }
+
     @Nullable
     override fun onCreateView(@NonNull inflater: LayoutInflater, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.layout_fragment_one, container, false)
@@ -40,6 +43,12 @@ class FragmentOne : Fragment() {
         val view =  binding.root
         binding.lifecycleOwner = this
         binding.userList = viewModel
+
+        preferenceHelper.setApiKey("Map key")
+        preferenceHelper.setUserId("User Id")
+
+        Log.d("print_api_key", preferenceHelper.getApiKey())
+        Log.d("print_user_id", preferenceHelper.getUserId())
 
         binding.btnAddNewUser.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_fragmentOne_to_fragmentTwo)

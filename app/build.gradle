@@ -121,9 +121,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging-ktx'
     implementation 'com.google.firebase:firebase-perf-ktx'
     implementation 'com.google.firebase:firebase-messaging-ktx'
-    implementation 'com.google.firebase:firebase-core-ktx'
     implementation 'com.google.firebase:firebase-database-ktx'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx'
+
+    implementation "androidx.security:security-crypto:1.1.0-alpha03"//files security
 }
 
 apply plugin: 'com.google.gms.google-services'
