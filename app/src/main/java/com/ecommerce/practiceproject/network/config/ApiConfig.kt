@@ -9,6 +9,12 @@ interface ApiConfig
 {
     @GET("api/")
     suspend fun getDataList(
-        @Query("results") items : String
+        @Query("page") page : Int,
+        @Query("results") items : Int
+    ) : DefaultResponse
+
+    @GET("api/")
+    suspend fun getDataList(
+        @Query("results") items : Int
     ) : DefaultResponse
 }

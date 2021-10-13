@@ -110,6 +110,9 @@ dependencies {
     implementation "androidx.core:core-ktx:1.6.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.5.31"
 
+    def paging_version = "3.0.1"
+    implementation("androidx.paging:paging-runtime:$paging_version")
+
     def coroutineVersion = '1.2.1'
     //dependency for coroutine
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"

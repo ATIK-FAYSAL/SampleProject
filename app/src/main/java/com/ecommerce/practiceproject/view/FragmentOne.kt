@@ -12,15 +12,19 @@ import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.ecommerce.practiceproject.R
 import com.ecommerce.practiceproject.adapter.UserListAdapter
+import com.ecommerce.practiceproject.adapter.UserListAdapterPagination
 import com.ecommerce.practiceproject.config.ViewModelFactory
 import com.ecommerce.practiceproject.core.IPreferenceHelper
 import com.ecommerce.practiceproject.core.PreferenceManager
 import com.ecommerce.practiceproject.databinding.LayoutFragmentOneBinding
 import com.ecommerce.practiceproject.model.UserRepository
 import com.ecommerce.practiceproject.view_model.FragmentViewModel
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import layout.ViewUtils
 
 
@@ -33,6 +37,7 @@ class FragmentOne : Fragment() {
 
     private lateinit var binding : LayoutFragmentOneBinding
     private lateinit var viewModel : FragmentViewModel
+    private val adapter = UserListAdapterPagination()
 
     private val preferenceHelper: IPreferenceHelper by lazy { PreferenceManager(requireContext()) }
 
@@ -54,6 +59,7 @@ class FragmentOne : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_fragmentOne_to_fragmentTwo)
         }
 
+        ViewUtils.verticalRecyclerView(requireContext(), binding.rvList).adapter = adapter
         return view
     }
 
@@ -61,6 +67,12 @@ class FragmentOne : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         getUserList()
         viewModel.getUserListFromRemote()
+
+//        lifecycleScope.launch {
+//            viewModel.listData.collect {
+//                adapter.submitData(it)
+//            }
+//        }
     }
 
     override fun onDestroy() {

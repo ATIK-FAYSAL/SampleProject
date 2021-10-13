@@ -29,9 +29,15 @@ class UserRepository
     /**
      * ...get user list from remote db
      */
+    suspend fun getUserLists(page : Int) : DefaultResponse{
+        val apiConfig = RetrofitClient.getRetrofitClient().create(ApiConfig::class.java)
+
+        return apiConfig.getDataList(page, 10)
+    }
+
     suspend fun getUserLists() : DefaultResponse{
         val apiConfig = RetrofitClient.getRetrofitClient().create(ApiConfig::class.java)
 
-        return apiConfig.getDataList("50")
+        return apiConfig.getDataList(50)
     }
 }

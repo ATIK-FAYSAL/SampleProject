@@ -3,9 +3,15 @@ package com.ecommerce.practiceproject.view_model
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
+import androidx.paging.liveData
 import com.ecommerce.practiceproject.data.ItemModel
 import com.ecommerce.practiceproject.database.entities.UserEntities
+import com.ecommerce.practiceproject.model.PostDataSource
 import com.ecommerce.practiceproject.model.UserRepository
+import com.ecommerce.practiceproject.network.config.ApiConfig
 import com.ecommerce.practiceproject.utils.isEmptyString
 import com.ecommerce.practiceproject.utils.phoneNumberValidation
 import kotlinx.coroutines.*
@@ -17,6 +23,10 @@ class FragmentViewModel( private  val repository : UserRepository) : ViewModel()
         get() = Dispatchers.Main + job
 
     lateinit var job: Job
+
+    val listData = Pager(PagingConfig(pageSize = 1)) {
+        PostDataSource()
+    }.flow.cachedIn(viewModelScope)
 
     init {
         job = Job()
