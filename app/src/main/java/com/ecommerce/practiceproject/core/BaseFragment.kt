@@ -21,7 +21,6 @@ import com.google.android.material.snackbar.Snackbar
  */
 abstract class BaseFragment : Fragment()
 {
-
     protected lateinit var layoutManager: LinearLayoutManager
 
     protected lateinit var loadingDialog : AlertDialog

@@ -12,7 +12,6 @@ import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.ecommerce.practiceproject.R
 import com.ecommerce.practiceproject.adapter.UserListAdapter
@@ -23,10 +22,7 @@ import com.ecommerce.practiceproject.core.PreferenceManager
 import com.ecommerce.practiceproject.databinding.LayoutFragmentOneBinding
 import com.ecommerce.practiceproject.model.UserRepository
 import com.ecommerce.practiceproject.view_model.FragmentViewModel
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import layout.ViewUtils
-
 
 /**
  * Date 9/19/2021.
